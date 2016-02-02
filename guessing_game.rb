@@ -1,31 +1,48 @@
 def prompt
   puts "Enter a whole number between 0 and 101."
-  gets.chomp = guess
-  return
+  return gets.chomp
 end
 
-range_pool = []
+def countdown
+  puts "Self destruct in 5 ..."
+  sleep 1
+  puts "4 ..."
+  sleep 1
+  puts "3 ..."
+  sleep 1
+  puts "2 ..."
+  sleep 1
+  puts "1 ..."
+  sleep 1
+  puts "I'm just screwing with you. The answer was "
+end
+
+def check(testing, guess)
+  return testing.include?(guess)
+end
+
+random = rand(1..100)
 guessing_record = []
 incomplete = true
 count = 0
+puts "random is #{random}"
 
-
-While incomplete
-  puts "Enter a whole number between 0 and 101."
-  guess = gets.chomp
-  guess.to_i!
-  guessing_record << guess
+while incomplete
+  guess = prompt.to_i
   count += 1
-    if count => 5
-      puts "Self destruct in ..."
-      puts "I'm just screwing with you. The answer was" + random_integer.to_s
-      break
-    elsif count < 5
-      puts "You have " + count.to_s + " chances left."
-    elsif guess == guessing_record
+  if guess == random
+    puts "You are correct!"
+    incomplete = false
+  elsif count >= 5
+    incomplete = false
+    countdown
+    puts random.to_s
+  elsif check(guessing_record, guess)
       puts "Did you stutter? I'm counting that anyway."
-    else guess.to_i == random_integer
-      puts "You are correct!"
-    end
+  elsif guess < random
+    puts "Look up."
+  elsif guess > random
+    puts "Look down."
   end
+  guessing_record << guess
 end
