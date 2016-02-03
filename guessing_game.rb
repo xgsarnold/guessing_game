@@ -40,9 +40,9 @@ while incomplete
   elsif check(guessing_record, guess)
       puts "Did you stutter? I'm counting that anyway."
   elsif guess < random
-    puts "Look up."
+    puts "Think higher."
   elsif guess > random
-    puts "Look down."
+    puts "Think lower."
   end
   guessing_record << guess
 end
