@@ -1,5 +1,5 @@
 def prompt
-  puts "Enter a whole number between 0 and 101."
+  puts "I'm thinking of a number between 0 and 101. What is it?"
   return gets.chomp
 end
 
@@ -25,7 +25,7 @@ random = rand(1..100)
 guessing_record = []
 incomplete = true
 count = 0
-puts "random is #{random}"
+#puts "random is #{random}"
 
 while incomplete
   guess = prompt.to_i
