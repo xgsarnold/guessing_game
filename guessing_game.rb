@@ -1,31 +1,25 @@
 def prompt
-  puts "Enter a whole number between 0 and 101."
-  return gets.chomp
+  puts "I'm thinking of a number from 1 to 100. What is it?"
+  gets.chomp
 end
 
-def countdown
-  puts "Self destruct in 5 ..."
-  sleep 1
-  puts "4 ..."
-  sleep 1
-  puts "3 ..."
-  sleep 1
-  puts "2 ..."
-  sleep 1
-  puts "1 ..."
-  sleep 1
+def countdown(number=5)
+  puts "Self destruct in"
+  number.times do |i|
+    puts "#{number-i} ..."
+    sleep 1
+  end
   puts "I'm just screwing with you. The answer was "
 end
 
-def check(testing, guess)
-  return testing.include?(guess)
+def check(attempts, guess)
+  attempts.include?(guess)
 end
 
 random = rand(1..100)
 guessing_record = []
 incomplete = true
 count = 0
-puts "random is #{random}"
 
 while incomplete
   guess = prompt.to_i
@@ -35,14 +29,14 @@ while incomplete
     incomplete = false
   elsif count >= 5
     incomplete = false
-    countdown
+    countdown(6)
     puts random.to_s
   elsif check(guessing_record, guess)
       puts "Did you stutter? I'm counting that anyway."
   elsif guess < random
-    puts "Look up."
+    puts "Try higher."
   elsif guess > random
-    puts "Look down."
+    puts "Try lower."
   end
   guessing_record << guess
 end
